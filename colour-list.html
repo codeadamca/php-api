@@ -10,18 +10,23 @@
     <ul id="colour-list"></ul>
 
     <script>
+      // Define a reference to the UL item
       let colourList = document.getElementById("colour-list");
 
+      // Make an API call to colours.php
       fetch("colours.php")
         .then(function (response) {
           // The API call was successful!
           console.log(response);
+          // Covert the response to JSON
           return response.json();
         })
         .then(function (data) {
           // This is the JSON from our response
           console.log(data);
+          // Loop through the colours
           for (let id in data.colours) {
+            // Add each colour to the UL item
             colourList.innerHTML += "<li>" + data.colours[id].name + "</li>";
           }
         })
